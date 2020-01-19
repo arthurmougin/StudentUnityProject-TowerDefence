@@ -1,0 +1,22 @@
+
+newmtl Standard4A4A4A
+Kd  0.29019604 0.29019604 0.29019604
+Ks  00 00 00
+Ka  00 00 00
+d  01
+Ns  00
+illum 2
+
+
+
+
+newmtl Standard340200
+Kd  0.20392158 0.0078431376 00
+Ks  00 00 00
+Ka  00 00 00
+d  01
+Ns  00
+illum 2
+
+
+

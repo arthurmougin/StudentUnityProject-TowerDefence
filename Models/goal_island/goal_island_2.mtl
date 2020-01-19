@@ -1,0 +1,44 @@
+
+newmtl Standard737373
+Kd  0.4509804 0.4509804 0.4509804
+Ks  00 00 00
+Ka  00 00 00
+d  01
+Ns  00
+illum 2
+
+
+
+
+newmtl Standard447B46
+Kd  0.2666667 0.48235296 0.2745098
+Ks  00 00 00
+Ka  00 00 00
+d  01
+Ns  00
+illum 2
+
+
+
+
+newmtl StandardD3D3D3
+Kd  0.82745096 0.82745096 0.82745096
+Ks  00 00 00
+Ka  00 00 00
+d  01
+Ns  00
+illum 2
+
+
+
+
+newmtl Standard0080FF
+Kd  00 0.5019608 01
+Ks  00 00 00
+Ka  00 00 00
+d  01
+Ns  00
+illum 2
+
+
+

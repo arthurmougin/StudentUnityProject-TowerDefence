@@ -1,0 +1,33 @@
+
+newmtl Reflective4F5354
+Kd  0.30980396 0.32549024 0.32941176
+Ks  0.8 0.8 0.8
+Ka  00 00 00
+d  01
+Ns  925
+illum 5
+
+
+
+
+newmtl Reflective363636
+Kd  0.2117647 0.2117647 0.2117647
+Ks  0.8 0.8 0.8
+Ka  00 00 00
+d  01
+Ns  925
+illum 5
+
+
+
+
+newmtl Reflective000000
+Kd  00 00 00
+Ks  0.8 0.8 0.8
+Ka  00 00 00
+d  01
+Ns  925
+illum 5
+
+
+
