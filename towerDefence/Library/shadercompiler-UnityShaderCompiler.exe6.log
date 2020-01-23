@@ -1,0 +1,12 @@
+Base path: 'C:/buildslave/unity/build/build/WindowsEditor/Data', plugins path ''
+Cmd: initializeCompiler
+Cmd: compileComputeKernel
+  api=4 insize=18299 outsize=10442 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=1176 outsize=772 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=1454 outsize=1455 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=4855 outsize=3708 ok=1
+
+Quitting shader compiler process
