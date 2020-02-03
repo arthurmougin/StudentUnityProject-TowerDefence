@@ -5,8 +5,18 @@ ModelImporter:
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: Take 001
-  externalObjects: {}
+    second: enemy_portal_idle
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Portal
+    second: {fileID: 2100000, guid: bf565aed1b7b67141994ceb04337ca55, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: shards
+    second: {fileID: 2100000, guid: cd6f615d1ed9ef941be22ffd3351c565, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -35,7 +45,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Take 001
+      name: enemy_portal_idle
       takeName: Take 001
       internalID: 1827226128182048838
       firstFrame: -1
@@ -46,7 +56,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
