@@ -53,9 +53,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\RTS_Camera\Scripts\Editor\LayoutHelpers.cs" />
-     <Compile Include="Assets\RTS_Camera\Scripts\Editor\RTS_CameraEditor.cs" />
-     <Compile Include="Assets\TutorialInfo\Scripts\Editor\ReadmeEditor.cs" />
+     <Compile Include="Assets\Extern_to_project\RTS_Camera\Scripts\Editor\LayoutHelpers.cs" />
+     <Compile Include="Assets\Extern_to_project\RTS_Camera\Scripts\Editor\RTS_CameraEditor.cs" />
+     <Compile Include="Assets\Extern_to_project\TutorialInfo\Scripts\Editor\ReadmeEditor.cs" />
  <Reference Include="UnityEditor.TestRunner">
  <HintPath>C:/Users/student/arthur Mougin/unity/TowerDefence/towerDefence/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
  </Reference>

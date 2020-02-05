@@ -53,16 +53,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\AllSkyFree\AllSkyFree_Menu.cs" />
-     <Compile Include="Assets\RTS_Camera\Demo\DemoScene.cs" />
-     <Compile Include="Assets\RTS_Camera\Demo\TargetSelector.cs" />
-     <Compile Include="Assets\RTS_Camera\Scripts\RTS_Camera.cs" />
+     <Compile Include="Assets\Extern_to_project\AllSkyFree\AllSkyFree_Menu.cs" />
+     <Compile Include="Assets\Extern_to_project\RTS_Camera\Demo\DemoScene.cs" />
+     <Compile Include="Assets\Extern_to_project\RTS_Camera\Demo\TargetSelector.cs" />
+     <Compile Include="Assets\Extern_to_project\RTS_Camera\Scripts\RTS_Camera.cs" />
+     <Compile Include="Assets\Extern_to_project\TutorialInfo\Scripts\Readme.cs" />
      <Compile Include="Assets\Scripts\SimpleCameraController.cs" />
-     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
-     <None Include="Assets\RTS_Camera\Demo\Projectors\Shaders\ProjectorLight.shader" />
-     <None Include="Assets\RTS_Camera\Demo\Projectors\Shaders\ProjectorMultiply.shader" />
-     <None Include="Assets\RTS_Camera\Demo\Projectors\Guidelines.txt" />
-     <None Include="Assets\AllSkyFree\AllSkyFree_Readme.txt" />
+     <None Include="Assets\Extern_to_project\RTS_Camera\Demo\Projectors\Shaders\ProjectorLight.shader" />
+     <None Include="Assets\Extern_to_project\RTS_Camera\Demo\Projectors\Shaders\ProjectorMultiply.shader" />
+     <None Include="Assets\Extern_to_project\RTS_Camera\Demo\Projectors\Guidelines.txt" />
+     <None Include="Assets\Extern_to_project\AllSkyFree\AllSkyFree_Readme.txt" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/Users/student/arthur Mougin/unity/TowerDefence/towerDefence/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>

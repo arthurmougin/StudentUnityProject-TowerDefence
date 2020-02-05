@@ -85,9 +85,9 @@ ModelImporter:
       name: tourelle_2_1_idle
       takeName: Take 001
       internalID: -5206772676957112137
-      firstFrame: 20
-      lastFrame: 20
-      wrapMode: 0
+      firstFrame: 22
+      lastFrame: 24
+      wrapMode: 2
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
