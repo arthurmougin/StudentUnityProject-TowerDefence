@@ -11,13 +11,12 @@ public class Moveto : MonoBehaviour
     private GameObject LocalPositionner;
     private NavMeshAgent navAgent;
     private float pathLength = 0f;
+    private float LeapHeight = 0f;
 
     public float mediumLeapHeight = 0f;
     public float maxDeltaLeapHeight = 10f;
-
-    private float LeapHeight = 0f;
-
-    public float localLeapHeight = 0f;
+    private float localLeapHeight = 0f;
+    private float previousLocalLeapHeight = 0f;
 
     void Start()
     {
@@ -29,38 +28,57 @@ public class Moveto : MonoBehaviour
 
         /* Mise en place de la trajectoire courbée sur l'axe y */
         LocalPositionner = this.gameObject.transform.GetChild(0).gameObject;
+
         //on cherche aléatoirement la taille de la courbe dans l'interval donné en paramêtre
         LeapHeight = Random.Range((mediumLeapHeight - maxDeltaLeapHeight), (mediumLeapHeight + maxDeltaLeapHeight));
-        localLeapHeight = LeapHeight;
-
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        //calcul de la distance entre la position actuelle et la destination (on suppose une trajectoire en ligne droite, l'evitement d'obstacle n'est pas génant)
+        float remainingDist = (navAgent.destination - gameObject.transform.position).magnitude;
+        float position = pathLength - remainingDist;
 
         // gestion de fin de parcour
-        if (navAgent.remainingDistance < 5 && navAgent.remainingDistance > 0)
+        if (remainingDist < 5 && remainingDist > 0)
         {
             //TODO remove points to goal
             Destroy(gameObject);
         }
         else
         { // gestion de la variation d'altitude 
-
-
-            if (pathLength == 0 || pathLength == Mathf.Infinity)// Le calcul du path prend un peu de temps, on l'attend donc pour éviter une catastrophe
+            if (pathLength == 0)// on update la distance à parcourir en fonction du premier calcul de distance etabli
             {
-                if(navAgent.remainingDistance != 0)
-                    pathLength = navAgent.remainingDistance;
-                return;
+                pathLength = remainingDist;
+                position = pathLength - remainingDist;
             }
 
+            localLeapHeight = LeapHeight;
+            /*
+             * On cherche à reproduire une trajectoire en cloche, ou un U en fonction du signe de LeapHeight.
+             * 
+             * On utilise la courbe de sinus sur l'interval [0,Pi] (https://en.wikipedia.org/wiki/Trigonometry)
+             * 
+             * Pour rester sur cette courbe, on calcul le produit en croix entre l'avancement de l'entité 
+             * jusqu'a l'objectif et l'avancement sur l'interval Pi. 
+             *  
+             *     Mathf.Sin( ( position * Mathf.PI) / pathLength ) 
+             *      
+             * On a donc la bonne courbe mais pas la bonne magnitude (sinus retourne une valeur entre 1 et 0 dans 
+             * l'interval [0,Pi]), il faut pour cela  emplifier sa taille en multipliant le tout avec LeapHeight;
+             * 
+             *      Mathf.Sin( ( position * Mathf.PI) / pathLength ) * LeapHeight
+             *      
+             * On applique le resultat à l'altitude à l'instant T (localLeapHeight) et on fait un translate de 
+             * l'écart entre la position actuelle et la précédente position
+             */
 
+            localLeapHeight = Mathf.Sin((position * Mathf.PI) / pathLength) * LeapHeight;
 
-            Debug.Log(localLeapHeight);
-            LocalPositionner.transform.position.Set(0, localLeapHeight, 0);
+            LocalPositionner.transform.Translate(0, localLeapHeight - previousLocalLeapHeight, 0);
+
+            previousLocalLeapHeight = localLeapHeight;
         }
     }
 }
