@@ -17,13 +17,12 @@ public class spawn_manager : MonoBehaviour
     public float spawnFrequency = 0.1f;//frequence de spawn des enemies
     public float timeBetweenWaves = 5f;//Delai de debut de vague
 
-    private bool spawnDone;//temoins de spawn
+    enum Status {ready,spawning, waiting};
+    Status SpawnState = Status.waiting;
     private int basicEnemyToSpawn;//queue de spawn des enemies simples
     private int hardEnemyToSpawn;//queue de spawn des enemies durs
     private int bossLevel;//temoins du nombre de boss déjà passés
     private float waveCountdown;//compteur avant le debut d'une vague
-    private float basicEnemySpawnCountDown = 0;//compteur avant le spawn d'un enemie simple
-    private float hardEnemySpawnCountDown = 0;//compteur avant le spawn d'un enemie dur
     [System.NonSerialized]
     public List<GameObject> aliveEnemies;
 
@@ -40,7 +39,7 @@ public class spawn_manager : MonoBehaviour
     void Update()
     {
 
-        if(aliveEnemies.Count <= 0 && basicEnemyToSpawn <= 0 && hardEnemyToSpawn <= 0) // changement de wave d'une vague à l'autre
+        if(SpawnState == Status.waiting && aliveEnemies.Count <= 0 && basicEnemyToSpawn <= 0 && hardEnemyToSpawn <= 0) // changement de wave d'une vague à l'autre
         {
             setupNewWave();
         }
@@ -50,7 +49,7 @@ public class spawn_manager : MonoBehaviour
             if(waveCountdown <= 0)
             {
                 //on verifie si l'on a quelque chose a spawn
-                if(spawnDone == false)
+                if(SpawnState == Status.ready)
                 {
                     StartCoroutine(spawnAgent());
                 }
@@ -74,8 +73,10 @@ public class spawn_manager : MonoBehaviour
          * Il augmente d'une vague à l'autre jusqu'à une vague de bosse ou il recommence à 0 + le numéro de bosse
          * 
          */
-        basicEnemyToSpawn = bossLevel + (int)Mathf.Floor((float) Mathf.Repeat(actualWave, bossLevel) * basicEnemyRate);
 
+
+        basicEnemyToSpawn = bossLevel + (int)Mathf.Floor((float) Mathf.Repeat(actualWave, bossWave) * basicEnemyRate);
+        
         /*
          * On obtient un nombre qui s'incremente petit à petit d'une vague de boss a l'autre, le jeu de conversion set à 
          * obtenir l'arrondi vers le bas de la multiplication par le taux d'enemy
@@ -85,25 +86,27 @@ public class spawn_manager : MonoBehaviour
 
         //On remet le timer à 0
         waveCountdown = timeBetweenWaves;
-        spawnDone = false;
+        SpawnState = Status.ready;
+
+        
     }
 
     IEnumerator spawnAgent()
     {
-        spawnDone = true;
+        SpawnState = Status.spawning;
 
         //while there is still enemies to spawn
-        while(basicEnemyToSpawn > 0 && hardEnemyToSpawn < 0)
+        while (basicEnemyToSpawn > 0 || hardEnemyToSpawn > 0)
         {
             int aleatoire = Random.Range(0, 2);
             //1 out of 3
-            if(aleatoire == 0)
+            if (aleatoire == 0)
             {
                 //we try to spawn an hard enemy, if we dont, we spawn a basic one
                 if (!spawnHardEnemy())
                     spawnBasicEnemy();
             }
-            else
+            else//2 out of 3
             {
                 //we try to spawn a basic enemy, if we dont, we spawn an hard one
                 if (!spawnBasicEnemy())
@@ -111,10 +114,10 @@ public class spawn_manager : MonoBehaviour
             }
 
             //waiting
-
+            yield return new WaitForSeconds(spawnFrequency);
 
         }
-
+        SpawnState = Status.waiting;
 
         yield break;
     }
@@ -123,6 +126,8 @@ public class spawn_manager : MonoBehaviour
     {
         if (hardEnemyToSpawn <= 0)
             return false;
+
+        Instantiate(enemyHard, this.Transform, spawnpoint);
 
         hardEnemyToSpawn--;
         Debug.Log("spawn hard enemy");
@@ -133,6 +138,9 @@ public class spawn_manager : MonoBehaviour
     {
         if (basicEnemyToSpawn <= 0)
             return false;
+
+        Instantiate(enemyBasic, this.Transform, spawnpoint);
+
 
         basicEnemyToSpawn--;
         Debug.Log("spawn basic enemy");
