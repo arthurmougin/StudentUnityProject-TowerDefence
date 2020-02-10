@@ -67,8 +67,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05f2d1e5bccafed409a10892a9ef9327, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mediumLeapHeight: 50
-  maxDeltaLeapHeight: 200
+  mediumLeapHeight: 20
+  maxDeltaLeapHeight: 50
 --- !u!1 &5872144582239695990
 GameObject:
   m_ObjectHideFlags: 0

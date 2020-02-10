@@ -58,9 +58,10 @@
      <Compile Include="Assets\Extern_to_project\RTS_Camera\Demo\TargetSelector.cs" />
      <Compile Include="Assets\Extern_to_project\RTS_Camera\Scripts\RTS_Camera.cs" />
      <Compile Include="Assets\Extern_to_project\TutorialInfo\Scripts\Readme.cs" />
-     <Compile Include="Assets\Moveto.cs" />
+     <Compile Include="Assets\Scripts\CannonBehavior.cs" />
+     <Compile Include="Assets\Scripts\Moveto.cs" />
      <Compile Include="Assets\Scripts\SimpleCameraController.cs" />
-     <Compile Include="Assets\spawn_manager.cs" />
+     <Compile Include="Assets\Scripts\spawn_manager.cs" />
      <None Include="Assets\Extern_to_project\RTS_Camera\Demo\Projectors\Shaders\ProjectorLight.shader" />
      <None Include="Assets\Extern_to_project\RTS_Camera\Demo\Projectors\Shaders\ProjectorMultiply.shader" />
      <None Include="Assets\Extern_to_project\RTS_Camera\Demo\Projectors\Guidelines.txt" />
