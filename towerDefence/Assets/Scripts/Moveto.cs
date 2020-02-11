@@ -8,6 +8,7 @@ public class Moveto : MonoBehaviour
     // Start is called before the first frame update
 
     private GameObject goal;
+    private GameObject navGoal;
     private GameObject LocalPositionner;
     private NavMeshAgent navAgent;
     private float pathLength = 0f;
@@ -24,8 +25,9 @@ public class Moveto : MonoBehaviour
     {
         /* Setup navigation */
         navAgent = GetComponent<NavMeshAgent>();
-        goal = GameObject.Find("navmesh_holder/navmesh_Goal");
-        navAgent.destination = goal.transform.position;
+        navGoal = GameObject.Find("navmesh_holder/navmesh_Goal");
+        goal = GameObject.Find("goal_island_prefab");
+        navAgent.destination = navGoal.transform.position;
 
         /* Mise en place de la trajectoire courbée sur l'axe y */
         LocalPositionner = this.gameObject.transform.GetChild(0).gameObject;
@@ -43,6 +45,11 @@ public class Moveto : MonoBehaviour
 
         if (remainingDist < 5 && remainingDist > 0)
         {
+            Debug.Log("damagingDefences");
+            //when an enemy arrive to spawn it damages it proportionnally to it's remainings shards
+            goal.GetComponent<Goal>().OnTakeDamage(transform.GetChild(0).GetChild(0).childCount+1);
+
+            //and then self destruct
             SelfDestroy();
         }
         else
@@ -89,16 +96,29 @@ public class Moveto : MonoBehaviour
 
     void SelfDestroy()
     {
-        // gestion de fin de parcour
-        //TODO remove points to goal
-
-        /*
-         * we get the parent, get the spawnManager component and then remove itself from the alivelist
-         * Then he selfdestruct
-         */
-        gameObject.transform.parent.gameObject.GetComponent<Spawn_manager>().aliveEnemies.Remove(gameObject);
-        
         Debug.Log("boom");
         Destroy(gameObject);
+    }
+
+    public void Touché(int impact)
+    {
+        //TODO particule system
+
+        int childCount = transform.GetChild(0).GetChild(0).childCount;
+        Debug.Log(childCount + " " + impact);
+        if (childCount < impact)
+        {
+            Debug.Log("Destruction");
+            SelfDestroy();
+            return;
+        }
+        Debug.Log("Impact");
+
+        while (impact > 0)
+        {
+            impact--;
+            int destroyedIndex = Random.Range(0, (childCount - 1));
+            Destroy(transform.GetChild(0).GetChild(0).GetChild(destroyedIndex).gameObject);
+        }
     }
 }

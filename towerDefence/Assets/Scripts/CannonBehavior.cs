@@ -10,8 +10,10 @@ public class CannonBehavior : MonoBehaviour
      [Header("Firing")]
     public float fireRate;
     private float fireCountDown;
-    public float DamagePerFire;
+    public int DamagePerFire;
     public float range;
+    public GameObject bullet;
+    public Transform firepoint;
     
 
     /*
@@ -22,7 +24,7 @@ public class CannonBehavior : MonoBehaviour
     private GameObject baseStructure;
     private Transform rotatingStructure;
     [SerializeField]
-    private List <GameObject> waypons;
+    private List <GameObject> waypons; 
     public float turnSpeed = 10;
 
     /*
@@ -92,6 +94,12 @@ public class CannonBehavior : MonoBehaviour
     void fire()
     {
         Debug.Log("Peww");
+        GameObject bulletTmp = (GameObject) Instantiate(bullet,firepoint.position,firepoint.rotation);
+        Bullet bulletScript = bulletTmp.GetComponent<Bullet>();
+        if(bulletScript != null)
+        {
+            bulletScript.Setup(target.transform, DamagePerFire);
+        }
     }
 
     GameObject getClosestEnemy(List<GameObject> enemies)
@@ -101,14 +109,17 @@ public class CannonBehavior : MonoBehaviour
         float closestDistanceSqr = Mathf.Infinity;
         foreach(GameObject enemy in enemies)
         {
-            Vector3 directionToTarget = enemy.transform.position - transform.position;
-            float distanceSqrToTarget = directionToTarget.sqrMagnitude;
-
-            //Si un objet est plus proche que le précédent, alors on le prend comme nouvelle target
-            if(distanceSqrToTarget < closestDistanceSqr)
+            if (enemy)
             {
-                closestDistanceSqr = distanceSqrToTarget;
-                closest = enemy;
+                Vector3 directionToTarget = enemy.transform.position - transform.position;
+                float distanceSqrToTarget = directionToTarget.sqrMagnitude;
+
+                //Si un objet est plus proche que le précédent, alors on le prend comme nouvelle target
+                if (distanceSqrToTarget < closestDistanceSqr)
+                {
+                    closestDistanceSqr = distanceSqrToTarget;
+                    closest = enemy;
+                }
             }
         }
 
@@ -117,10 +128,10 @@ public class CannonBehavior : MonoBehaviour
 
     void updateTarget()
     {
-        if (enemyGenerator.aliveEnemies.Count != 0)
+        if (enemyGenerator.aliveEnemiesCount() != 0)
         {
             //on prend le plus proche des enemis en vie
-            target = getClosestEnemy(enemyGenerator.aliveEnemies);
+            target = getClosestEnemy(enemyGenerator.GetAliveEnemies());
 
         }
 

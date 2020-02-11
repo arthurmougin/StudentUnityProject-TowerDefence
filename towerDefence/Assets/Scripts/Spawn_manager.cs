@@ -23,9 +23,7 @@ public class Spawn_manager : MonoBehaviour
     private int hardEnemyToSpawn;//queue de spawn des enemies durs
     private int bossLevel;//temoins du nombre de boss déjà passés
     private float waveCountdown;//compteur avant le debut d'une vague
-    [System.NonSerialized]
 
-    public List<GameObject> aliveEnemies = new List<GameObject>();
 
     void Start()
     {
@@ -38,8 +36,9 @@ public class Spawn_manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if(SpawnState == Status.waiting && aliveEnemies.Count == 0 && basicEnemyToSpawn <= 0 && hardEnemyToSpawn <= 0) // changement de wave d'une vague à l'autre
+        int enemyCount = transform.childCount;
+
+        if (SpawnState == Status.waiting && enemyCount == 0 && basicEnemyToSpawn <= 0 && hardEnemyToSpawn <= 0) // changement de wave d'une vague à l'autre
         {
             setupNewWave();
         }
@@ -127,10 +126,10 @@ public class Spawn_manager : MonoBehaviour
         if (hardEnemyToSpawn <= 0)
             return false;
 
-        aliveEnemies.Add(Instantiate(enemyHard, spawnpoint.transform.position, spawnpoint.transform.rotation, gameObject.transform));
+        Instantiate(enemyHard, spawnpoint.transform.position, spawnpoint.transform.rotation, gameObject.transform);
 
         hardEnemyToSpawn--;
-        Debug.Log("spawn hard enemy");
+        //Debug.Log("spawn hard enemy");
         return true;
     }
 
@@ -139,10 +138,23 @@ public class Spawn_manager : MonoBehaviour
         if (basicEnemyToSpawn <= 0)
             return false;
 
-        aliveEnemies.Add(Instantiate(enemyBasic, spawnpoint.transform.position, spawnpoint.transform.rotation, gameObject.transform));
+        Instantiate(enemyBasic, spawnpoint.transform.position, spawnpoint.transform.rotation, gameObject.transform);
 
         basicEnemyToSpawn--;
-        Debug.Log("spawn basic enemy");
+        //Debug.Log("spawn basic enemy");
         return true;
+    }
+
+    public int aliveEnemiesCount()
+    {
+        return transform.childCount;
+    }
+
+    public List <GameObject> GetAliveEnemies()
+    {
+        //thanks jessy https://answers.unity.com/questions/38760/how-to-get-an-array-of-all-children-of-any-type-bu.html
+        List<GameObject> enemies = new List<GameObject>();
+        foreach (Transform child in transform) enemies.Add(child.gameObject);
+        return enemies;
     }
 }

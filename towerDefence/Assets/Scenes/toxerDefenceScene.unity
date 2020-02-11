@@ -121,6 +121,27 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: d735737c9771da54ba796850cdb479d3, type: 2}
+--- !u!1 &1715408 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8878658853913476948, guid: 2f3d9bcf8940387419406da27d6c01f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1503680187}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1715410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5b7d1317f9884047bc668669e01433c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxLive: 100
+  shield: {fileID: 1503680188}
+  minShieldSize: 0.005175855
 --- !u!1 &57300250
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,7 +202,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 178444495}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1274}
+  m_LocalPosition: {x: 4, y: 0, z: 1274}
   m_LocalScale: {x: 90.59855, y: 212.11, z: 211.89156}
   m_Children: []
   m_Father: {fileID: 57300251}
@@ -317,6 +338,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b2fad0db8d777b4f87a0111aa87fd05, type: 3}
+--- !u!4 &331903791 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1417124711102729419, guid: 9b2fad0db8d777b4f87a0111aa87fd05,
+    type: 3}
+  m_PrefabInstance: {fileID: 331903790}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &496633118
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,13 +367,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 496633118}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2305}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 13, y: 0, z: 2213}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 57300251}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &710396558 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7964018512924669526, guid: 6a75ff2ff0cd323428a6089fae22ab75,
@@ -427,6 +454,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 022935c8079dd1341ab76031bf61318d, type: 3}
+--- !u!4 &748068489 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5213301950065089943, guid: 022935c8079dd1341ab76031bf61318d,
+    type: 3}
+  m_PrefabInstance: {fileID: 748068488}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &793177976
 GameObject:
   m_ObjectHideFlags: 0
@@ -653,13 +686,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76acd85be2867e946914f8295bab1311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeTo: {fileID: 0}
-  upgradeCost: 1
   fireRate: 0.4
   DamagePerFire: 1
-  range: 250
+  range: 500
+  bullet: {fileID: 5089974570693541929, guid: 6872942b778363346a70160cca941429, type: 3}
+  firepoint: {fileID: 8488492170607505485}
   baseStructure: {fileID: 2069132523}
   waypons: []
+  turnSpeed: 10
+  upgradeTo: {fileID: 0}
+  upgradeCost: 1
 --- !u!1001 &1254763570
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -680,7 +716,7 @@ PrefabInstance:
     - target: {fileID: 7964018512924669526, guid: 6a75ff2ff0cd323428a6089fae22ab75,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 552.36774
+      value: 682
       objectReference: {fileID: 0}
     - target: {fileID: 7964018512924669526, guid: 6a75ff2ff0cd323428a6089fae22ab75,
         type: 3}
@@ -726,6 +762,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: island_1_prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 2877249041056480125, guid: 6a75ff2ff0cd323428a6089fae22ab75,
+        type: 3}
+      propertyPath: m_CarveOnlyStationary
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2877249041056480125, guid: 6a75ff2ff0cd323428a6089fae22ab75,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a75ff2ff0cd323428a6089fae22ab75, type: 3}
@@ -787,7 +833,7 @@ MonoBehaviour:
   bossWave: 5
   basicEnemyRate: 2
   hardEnemyRate: 0.2
-  spawnFrequency: 0.1
+  spawnFrequency: 0.5
   timeBetweenWaves: 5
 --- !u!1001 &1503680187
 PrefabInstance:
@@ -856,8 +902,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1869957510720882036, guid: 2f3d9bcf8940387419406da27d6c01f0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f3d9bcf8940387419406da27d6c01f0, type: 3}
+--- !u!1 &1503680188 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4557293137589386039, guid: 2f3d9bcf8940387419406da27d6c01f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1503680187}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1651791531
 GameObject:
   m_ObjectHideFlags: 0
@@ -910,13 +967,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76acd85be2867e946914f8295bab1311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeTo: {fileID: 0}
-  upgradeCost: 1
   fireRate: 0.5
   DamagePerFire: 1
-  range: 200
+  range: 400
+  bullet: {fileID: 5089974570693541929, guid: 6872942b778363346a70160cca941429, type: 3}
+  firepoint: {fileID: 331903791}
   baseStructure: {fileID: 2058078756}
   waypons: []
+  turnSpeed: 10
+  upgradeTo: {fileID: 0}
+  upgradeCost: 1
 --- !u!4 &1803066921 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7964018512924669526, guid: 6a75ff2ff0cd323428a6089fae22ab75,
@@ -953,13 +1013,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76acd85be2867e946914f8295bab1311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeTo: {fileID: 0}
-  upgradeCost: 2
   fireRate: 0.7
-  DamagePerFire: 2
-  range: 150
+  DamagePerFire: 1
+  range: 300
+  bullet: {fileID: 5089974570693541929, guid: 6872942b778363346a70160cca941429, type: 3}
+  firepoint: {fileID: 3730819798533123268}
   baseStructure: {fileID: 1838861555}
   waypons: []
+  turnSpeed: 10
+  upgradeTo: {fileID: 0}
+  upgradeCost: 2
 --- !u!1001 &1936147957
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1027,6 +1090,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: island_2_prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 2495264579817730090, guid: 05e9277236e9b1f4f84657319a75e826,
+        type: 3}
+      propertyPath: m_CarveOnlyStationary
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2495264579817730090, guid: 05e9277236e9b1f4f84657319a75e826,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05e9277236e9b1f4f84657319a75e826, type: 3}
 --- !u!1 &1939935717 stripped
@@ -1047,13 +1120,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76acd85be2867e946914f8295bab1311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeTo: {fileID: 0}
-  upgradeCost: 2
   fireRate: 0.5
-  DamagePerFire: 2
-  range: 160
+  DamagePerFire: 1
+  range: 320
+  bullet: {fileID: 5089974570693541929, guid: 6872942b778363346a70160cca941429, type: 3}
+  firepoint: {fileID: 748068489}
   baseStructure: {fileID: 1023392305}
   waypons: []
+  turnSpeed: 10
+  upgradeTo: {fileID: 0}
+  upgradeCost: 2
 --- !u!1 &2058078756 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2828839609052507231, guid: 9b2fad0db8d777b4f87a0111aa87fd05,
@@ -1163,6 +1239,16 @@ PrefabInstance:
       propertyPath: m_Extents.x
       value: 1.3240001
       objectReference: {fileID: 0}
+    - target: {fileID: 2877249041056480125, guid: 6a75ff2ff0cd323428a6089fae22ab75,
+        type: 3}
+      propertyPath: m_CarveOnlyStationary
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2877249041056480125, guid: 6a75ff2ff0cd323428a6089fae22ab75,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a75ff2ff0cd323428a6089fae22ab75, type: 3}
 --- !u!1001 &3730819798533123267
@@ -1234,6 +1320,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eadf7d504b2dfb344805604b1e56826a, type: 3}
+--- !u!4 &3730819798533123268 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8698785855491156510, guid: eadf7d504b2dfb344805604b1e56826a,
+    type: 3}
+  m_PrefabInstance: {fileID: 3730819798533123267}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4374615254265345970
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1244,7 +1336,7 @@ PrefabInstance:
     - target: {fileID: 7180995776207800399, guid: 05e9277236e9b1f4f84657319a75e826,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -80
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 7180995776207800399, guid: 05e9277236e9b1f4f84657319a75e826,
         type: 3}
@@ -1331,6 +1423,16 @@ PrefabInstance:
       propertyPath: m_CarveOnlyStationary
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2495264579817730090, guid: 05e9277236e9b1f4f84657319a75e826,
+        type: 3}
+      propertyPath: m_CarveOnlyStationary
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2495264579817730090, guid: 05e9277236e9b1f4f84657319a75e826,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05e9277236e9b1f4f84657319a75e826, type: 3}
 --- !u!1001 &8488492170607505484
@@ -1402,3 +1504,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f5fb2226e37a0c47a76a10255e93474, type: 3}
+--- !u!4 &8488492170607505485 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1333642689155976684, guid: 2f5fb2226e37a0c47a76a10255e93474,
+    type: 3}
+  m_PrefabInstance: {fileID: 8488492170607505484}
+  m_PrefabAsset: {fileID: 0}
