@@ -31,8 +31,6 @@ public class Spawn_manager : MonoBehaviour
         waveCountdown = timeBetweenWaves;
     }
 
-
-
     // Update is called once per frame
     void Update()
     {
@@ -50,7 +48,7 @@ public class Spawn_manager : MonoBehaviour
                 //on verifie si l'on a quelque chose a spawn
                 if(SpawnState == Status.ready)
                 {
-                    StartCoroutine(spawnAgent());
+                    StartCoroutine("spawnAgent");
                 }
             }
             else waveCountdown -= Time.deltaTime;
@@ -156,5 +154,17 @@ public class Spawn_manager : MonoBehaviour
         List<GameObject> enemies = new List<GameObject>();
         foreach (Transform child in transform) enemies.Add(child.gameObject);
         return enemies;
+    }
+
+    public void reset()
+    {
+        StopCoroutine("spawnAgent");
+
+        foreach (Transform child in transform)
+            Destroy(child.gameObject);
+
+        actualWave = 0;
+        SpawnState = Status.waiting;
+
     }
 }
