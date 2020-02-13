@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1835239340543520196}
   - component: {fileID: 8992265286348912852}
   - component: {fileID: 430552963}
+  - component: {fileID: 1897946442690118484}
   m_Layer: 0
   m_Name: enemy_1_prefab
   m_TagString: Untagged
@@ -67,9 +68,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05f2d1e5bccafed409a10892a9ef9327, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goal: {fileID: 0}
   mediumLeapHeight: 20
   maxDeltaLeapHeight: 50
+--- !u!65 &1897946442690118484
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835239340543520197}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5872144582239695990
 GameObject:
   m_ObjectHideFlags: 0
