@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 5787296597546160114}
   - component: {fileID: 2877249041056480125}
   - component: {fileID: 7964018511309924172}
+  - component: {fileID: 959090815}
+  - component: {fileID: 588815811}
   m_Layer: 0
   m_Name: island_1
   m_TagString: Untagged
@@ -115,7 +117,7 @@ NavMeshObstacle:
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: -1.746}
+  m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
 --- !u!95 &7964018511309924172
 Animator:
@@ -136,6 +138,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!135 &959090815
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135847182649277059}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.5766165
+  m_Center: {x: 0.0000002991841, y: 3.3532298e-15, z: -1.0049273}
+--- !u!114 &588815811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135847182649277059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5137136b72bf4a43ad3eb0aec7a03da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverFactor: 1.1
 --- !u!1 &3929884803313895738
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,6 +333,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7964018512924669526}
+  - component: {fileID: 1664990836857731904}
   m_Layer: 0
   m_Name: island_1_prefab
   m_TagString: Untagged
@@ -319,7 +348,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7964018512924669529}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -51, y: 0, z: 439}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -327,3 +356,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1664990836857731904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7964018512924669529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f23ac6b3cac7e364ba902fd04a62be2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TourelleUIHolder: {fileID: 0}

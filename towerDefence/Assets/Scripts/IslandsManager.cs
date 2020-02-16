@@ -7,14 +7,16 @@ public class IslandsManager : MonoBehaviour
 {
     private bool lookingToAddIsland = false;
     public GameObject CollisionBox;
-    private bool activeCollBox = false;
+    private ColliderListener CollidingTest;
     public GameObject[] island_prefabs;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        //Debug.Log(CollisionBox.name);
+        CollidingTest = CollisionBox.transform.GetChild(0).gameObject.GetComponent<ColliderListener>();
+        //Debug.Log(CollidingTest != null);
     }
 
     // Update is called once per frame
@@ -33,11 +35,10 @@ public class IslandsManager : MonoBehaviour
             if (Physics.Raycast(ray,out hit))
             {
                 CollisionBox.SetActive(true);
-                activeCollBox = true;
                 CollisionBox.transform.position = hit.point;
                 // Debug.Log(hit.collider.gameObject.name);
 
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(0) && CollidingTest.aviable == true)
                 {
                     GameObject babyIsland = island_prefabs[Random.Range(0, island_prefabs.Length - 1)];
                     Vector3 rotationRand = new Vector3(0, Random.Range(0, 360), 0);
@@ -48,7 +49,6 @@ public class IslandsManager : MonoBehaviour
             else
             {
                 CollisionBox.SetActive(false);
-                activeCollBox = false;
             };
         }
     }
@@ -59,12 +59,10 @@ public class IslandsManager : MonoBehaviour
         if (!lookingToAddIsland)
         {
             CollisionBox.SetActive(false);
-            activeCollBox = false;
         }
         else
         {
             CollisionBox.SetActive(true);
-            activeCollBox = true;
         }
     }
 }

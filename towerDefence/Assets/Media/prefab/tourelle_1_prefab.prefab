@@ -219,6 +219,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6080954286878085727}
+  - component: {fileID: 1762738833}
   m_Layer: 0
   m_Name: tourelle_1_prefab
   m_TagString: Untagged
@@ -241,6 +242,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1762738833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6080954286878085726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76acd85be2867e946914f8295bab1311, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireRate: 0.5
+  DamagePerFire: 1
+  range: 400
+  bullet: {fileID: 5089974570693541929, guid: 6872942b778363346a70160cca941429, type: 3}
+  firepoint: {fileID: 1417124711102729419}
+  baseStructure: {fileID: 2828839609052507231}
+  waypons: []
+  turnSpeed: 10
+  upgradeTo: {fileID: 0}
+  upgradeCost: 1
 --- !u!1 &6219192936716430886
 GameObject:
   m_ObjectHideFlags: 0

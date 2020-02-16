@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -33,15 +34,16 @@ public class ColliderListener : MonoBehaviour
             return;
         }
             
-        Debug.Log("triggerEnter");
+       // Debug.Log("triggerEnter");
         aviable = false;
         rend.material = warning;
     }
     void OnTriggerExit(Collider c)
     {
-        Debug.Log("OnTriggerExit");
+      //  Debug.Log("OnTriggerExit");
         aviable = true;
         rend.material = safe;
+        
     }
     /*
     void OnTriggerStay(Collider c)

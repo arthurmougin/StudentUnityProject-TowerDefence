@@ -45,7 +45,7 @@ public class Moveto : MonoBehaviour
 
         if (remainingDist < 5 && remainingDist > 0)
         {
-            Debug.Log("damagingDefences");
+           // Debug.Log("damagingDefences");
             //when an enemy arrive to spawn it damages it proportionnally to it's remainings shards
             goal.GetComponent<Goal>().OnTakeDamage(transform.GetChild(0).GetChild(0).childCount+1);
 
@@ -96,7 +96,7 @@ public class Moveto : MonoBehaviour
 
     void SelfDestroy()
     {
-        Debug.Log("boom");
+        //Debug.Log("boom");
         Destroy(gameObject);
     }
 
@@ -105,14 +105,14 @@ public class Moveto : MonoBehaviour
         //TODO particule system
 
         int childCount = transform.GetChild(0).GetChild(0).childCount;
-        Debug.Log(childCount + " " + impact);
+        //Debug.Log(childCount + " " + impact);
         if (childCount < impact)
         {
-            Debug.Log("Destruction");
+            //Debug.Log("Destruction");
             SelfDestroy();
             return;
         }
-        Debug.Log("Impact");
+        //Debug.Log("Impact");
 
         while (impact > 0)
         {

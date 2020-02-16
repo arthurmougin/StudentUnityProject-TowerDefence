@@ -93,7 +93,7 @@ public class CannonBehavior : MonoBehaviour
 
     void fire()
     {
-        Debug.Log("Peww");
+       // Debug.Log("Peww");
         GameObject bulletTmp = (GameObject) Instantiate(bullet,firepoint.position,firepoint.rotation);
         Bullet bulletScript = bulletTmp.GetComponent<Bullet>();
         if(bulletScript != null)
