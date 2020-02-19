@@ -59,6 +59,7 @@
      <Compile Include="Assets\Extern_to_project\RTS_Camera\Scripts\RTS_Camera.cs" />
      <Compile Include="Assets\Extern_to_project\TutorialInfo\Scripts\Readme.cs" />
      <Compile Include="Assets\GameManager.cs" />
+     <Compile Include="Assets\InformationDisplay.cs" />
      <Compile Include="Assets\Scripts\Bullet.cs" />
      <Compile Include="Assets\Scripts\CannonBehavior.cs" />
      <Compile Include="Assets\Scripts\ColliderListener.cs" />

@@ -6,11 +6,21 @@ public class IslandSingle : MonoBehaviour
 {
 
     public float hoverFactor = 1.5f;
-    public UIHandler TourelleUIHolder;
+
+    /*
+    For strange reasons, the prefab can't save the UIhandler 
+    when set in public and the islandprefab is deleted from 
+    the scene
+
+    as a quickfix, i take it from the gameManager who is a trust source
+    */
+    private UIHandler TourelleUIHolder;
     private bool isOwner = false;
 
     // Start is called before the first frame update
-    void start(){
+    void Start(){
+
+        TourelleUIHolder = GameManager.instance.uIHandler;
        
     }
 
@@ -33,6 +43,7 @@ public class IslandSingle : MonoBehaviour
 
     void OnMouseDown(){
         Debug.Log("OnMouseDown");
+        Debug.Log(TourelleUIHolder != null);
         if(isOwner)
         {
             TourelleUIHolder.dismissOwnerShip(gameObject);
@@ -43,5 +54,11 @@ public class IslandSingle : MonoBehaviour
 
     public void setOwnerShip(bool owning){
         isOwner = owning;
+    }
+
+    public GameObject askTower(){
+        if(transform.parent.childCount > 1)
+            return transform.parent.GetChild(1).gameObject;
+        else return null;
     }
 }

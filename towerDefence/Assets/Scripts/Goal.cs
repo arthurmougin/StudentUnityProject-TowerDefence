@@ -7,7 +7,6 @@ public class Goal : MonoBehaviour
     public float maxLive = 100;
     private float actualLive;
     public GameObject shield;
-    public GameObject gameManager;
     public float minShieldSize;
     private float maxShieldSize;
 
@@ -37,7 +36,7 @@ public class Goal : MonoBehaviour
         }
         else //sinon c'est mort
         {
-            gameManager.GetComponent<GameManager>().onShieldFallen();
+            GameManager.instance.onShieldFallen();
         }
     }
 

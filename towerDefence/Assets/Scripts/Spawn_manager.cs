@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Spawn_manager : MonoBehaviour
 {
+
+    public static Spawn_manager instance;
+    
+    public GameObject informationDisplay;
     // Start is called before the first frame update
     public GameObject enemyHard; 
     public GameObject enemyBasic;
@@ -22,8 +26,15 @@ public class Spawn_manager : MonoBehaviour
     private int basicEnemyToSpawn;//queue de spawn des enemies simples
     private int hardEnemyToSpawn;//queue de spawn des enemies durs
     private int bossLevel;//temoins du nombre de boss déjà passés
-    private float waveCountdown;//compteur avant le debut d'une vague
+    public float waveCountdown;//compteur avant le debut d'une vague
 
+    private void Awake() {
+        if(instance != null){
+            Debug.LogError("More than one Spawn_manager in scene");
+            return;
+        }
+        instance = this;
+    }
 
     void Start()
     {
@@ -34,6 +45,9 @@ public class Spawn_manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Time.timeScale == 0)
+            return;
+
         int enemyCount = transform.childCount;
 
         if (SpawnState == Status.waiting && enemyCount == 0 && basicEnemyToSpawn <= 0 && hardEnemyToSpawn <= 0) // changement de wave d'une vague à l'autre
@@ -84,8 +98,7 @@ public class Spawn_manager : MonoBehaviour
         //On remet le timer à 0
         waveCountdown = timeBetweenWaves;
         SpawnState = Status.ready;
-
-        
+        informationDisplay.GetComponent<InformationDisplay>().startCountDown(instance);
     }
 
     IEnumerator spawnAgent()

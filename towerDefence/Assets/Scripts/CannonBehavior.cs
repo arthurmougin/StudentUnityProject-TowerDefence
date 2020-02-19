@@ -31,20 +31,17 @@ public class CannonBehavior : MonoBehaviour
      * Targeting system
      */
     private GameObject target = null;
-    private Spawn_manager enemyGenerator;//spawnmanager
 
     /*
      * Upgrading
      */
     [Header("Upgrade")]
     public GameObject upgradeTo = null;
-    public int upgradeCost;
+    public int cost;
 
     // Start is called before the first frame update
     void Start()
     {
-        //get access to spawnmanager
-        enemyGenerator = GameObject.Find("enemies_holder").GetComponent<Spawn_manager>();   
         //start targeting
         InvokeRepeating("updateTarget", 0f, 0.5f);
         //setup rotating parts
@@ -128,10 +125,10 @@ public class CannonBehavior : MonoBehaviour
 
     void updateTarget()
     {
-        if (enemyGenerator.aliveEnemiesCount() != 0)
+        if (Spawn_manager.instance.aliveEnemiesCount() != 0)
         {
             //on prend le plus proche des enemis en vie
-            target = getClosestEnemy(enemyGenerator.GetAliveEnemies());
+            target = getClosestEnemy(Spawn_manager.instance.GetAliveEnemies());
 
         }
 

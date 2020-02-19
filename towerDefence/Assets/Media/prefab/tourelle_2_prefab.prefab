@@ -52,8 +52,9 @@ MonoBehaviour:
   baseStructure: {fileID: 5235034719141584406}
   waypons: []
   turnSpeed: 10
-  upgradeTo: {fileID: 0}
-  upgradeCost: 2
+  upgradeTo: {fileID: 8878866081817144735, guid: 022935c8079dd1341ab76031bf61318d,
+    type: 3}
+  cost: 5
 --- !u!1 &4455728535196382724
 GameObject:
   m_ObjectHideFlags: 0

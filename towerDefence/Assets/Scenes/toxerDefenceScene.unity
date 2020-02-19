@@ -309,7 +309,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: sell tourelle (+1$)
 --- !u!222 &101355158
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -432,7 +432,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 104, y: 80}
+  m_SizeDelta: {x: 125, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &161206951
 MonoBehaviour:
@@ -455,26 +455,28 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_Font: {fileID: 12800000, guid: 87cfc884b32b5534da245288b6678778, type: 3}
+    m_FontSize: 13
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Tourelle_1     1$
-
+  m_Text: 'Tourelle_1
 
     10 Fire/Seconds
 
     500m of Range
 
-    1 of Damage'
+    1 of Damage
+
+    cost
+    = 1$'
 --- !u!222 &161206952
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -671,7 +673,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &334421793
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1038,13 +1040,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65a05504cd7144d4babffaacb96c30c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnManager: {fileID: 1479897339}
   tourelleHolder: {fileID: 1651791531}
+  uIHandler: {fileID: 2133641408}
   goal: {fileID: 1715408}
   mainMenu: {fileID: 334421792}
   gameMenu: {fileID: 1984150663}
   pauseMenu: {fileID: 427922761}
   failMenu: {fileID: 253920146}
+  tower_prefabs:
+  - {fileID: 6080954286878085726, guid: 9b2fad0db8d777b4f87a0111aa87fd05, type: 3}
+  - {fileID: 776182617379906595, guid: eadf7d504b2dfb344805604b1e56826a, type: 3}
+  - {fileID: 1625910286749340406, guid: 2f5fb2226e37a0c47a76a10255e93474, type: 3}
+  - {fileID: 8878866081817144735, guid: 022935c8079dd1341ab76031bf61318d, type: 3}
+  island_prefabs:
+  - {fileID: 7964018512924669529, guid: 6a75ff2ff0cd323428a6089fae22ab75, type: 3}
+  - {fileID: 7180995776207800396, guid: 05e9277236e9b1f4f84657319a75e826, type: 3}
+  sellingFactor: 0.5
+  islandPrice: 5
 --- !u!4 &464520607
 Transform:
   m_ObjectHideFlags: 0
@@ -1534,7 +1546,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 104, y: 80}
+  m_SizeDelta: {x: 125, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &803727560
 MonoBehaviour:
@@ -1557,26 +1569,28 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_Font: {fileID: 12800000, guid: 87cfc884b32b5534da245288b6678778, type: 3}
+    m_FontSize: 13
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Tourelle_1     1$
-
+  m_Text: 'Tourelle_1
 
     10 Fire/Seconds
 
     500m of Range
 
-    1 of Damage'
+    1 of Damage
+
+    cost
+    = 1$'
 --- !u!222 &803727561
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2199,12 +2213,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1312708643}
   m_CullTransparentMesh: 0
---- !u!4 &1401214705 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7180995776207800399, guid: 05e9277236e9b1f4f84657319a75e826,
-    type: 3}
-  m_PrefabInstance: {fileID: 4374615254265345970}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1479897337
 GameObject:
   m_ObjectHideFlags: 0
@@ -2248,6 +2256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93dd69fda306c3d458bdefb8769a6a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  informationDisplay: {fileID: 1652306894}
   enemyHard: {fileID: 1835239340543520197, guid: e161b12e2016b0c4a81a57b51b597697,
     type: 3}
   enemyBasic: {fileID: 4994303421592915865, guid: 0e92e580854caf747894542cf450c9f5,
@@ -2259,6 +2268,7 @@ MonoBehaviour:
   hardEnemyRate: 0.2
   spawnFrequency: 0.5
   timeBetweenWaves: 5
+  waveCountdown: 0
 --- !u!1001 &1503680187
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2580,8 +2590,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -64, y: 100}
-  m_SizeDelta: {x: 125, y: 100}
+  m_AnchoredPosition: {x: -64, y: 66}
+  m_SizeDelta: {x: 115, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1646256597
 MonoBehaviour:
@@ -2625,7 +2635,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1646256598}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2133641408}
+        m_MethodName: leftButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1646256598
@@ -2693,9 +2714,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1401214705}
-  - {fileID: 1803066921}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2711,10 +2730,107 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8e9c9340c6813a46ad1dc132b7e62be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  addIslandButton: {fileID: 492475149}
   CollisionBox: {fileID: 1017473297}
-  island_prefabs:
-  - {fileID: 7964018512924669529, guid: 6a75ff2ff0cd323428a6089fae22ab75, type: 3}
-  - {fileID: 7180995776207800396, guid: 05e9277236e9b1f4f84657319a75e826, type: 3}
+--- !u!1 &1652306894
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1652306895}
+  - component: {fileID: 1652306897}
+  - component: {fileID: 1652306896}
+  - component: {fileID: 1652306898}
+  m_Layer: 5
+  m_Name: informations
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1652306895
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652306894}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1984150664}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -63, y: -60}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1652306896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652306894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 7a99026241a2c1e469fd4368174c5f7c, type: 3}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 2
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: '100$ in cash
+
+    wave 10 (0 until boss wave)
+
+    0 enemie(s) remaining
+
+    0
+    second(s) before next wave'
+--- !u!222 &1652306897
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652306894}
+  m_CullTransparentMesh: 0
+--- !u!114 &1652306898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652306894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f645486ac8d45a44bab1ec9559f4e910, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1742259145
 GameObject:
   m_ObjectHideFlags: 0
@@ -2927,12 +3043,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1768108254}
   m_CullTransparentMesh: 0
---- !u!4 &1803066921 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7964018512924669526, guid: 6a75ff2ff0cd323428a6089fae22ab75,
-    type: 3}
-  m_PrefabInstance: {fileID: 3096170350374340726}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1944221850
 GameObject:
   m_ObjectHideFlags: 0
@@ -2969,7 +3079,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -53.15}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1944221852
@@ -2997,7 +3107,7 @@ MonoBehaviour:
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
+    m_ColorMultiplier: 1.06
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
@@ -3014,7 +3124,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1944221853}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2133641408}
+        m_MethodName: bottomButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1944221853
@@ -3287,7 +3408,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1984150664
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3302,6 +3423,7 @@ RectTransform:
   - {fileID: 492475148}
   - {fileID: 852640663}
   - {fileID: 2133641407}
+  - {fileID: 1652306895}
   m_Father: {fileID: 1968458475}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3463,8 +3585,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 64, y: 100}
-  m_SizeDelta: {x: 125, y: 100}
+  m_AnchoredPosition: {x: 64, y: 66}
+  m_SizeDelta: {x: 115, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2081331902
 MonoBehaviour:
@@ -3508,7 +3630,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2081331903}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2133641408}
+        m_MethodName: rightButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2081331903
@@ -3585,7 +3718,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5, y: -127}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2133641408
@@ -3600,161 +3733,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f23ac6b3cac7e364ba902fd04a62be2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &3096170350374340726
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1651791532}
-    m_Modifications:
-    - target: {fileID: 7964018512924669529, guid: 6a75ff2ff0cd323428a6089fae22ab75,
-        type: 3}
-      propertyPath: m_Name
-      value: island_1_prefab
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964018512924669526, guid: 6a75ff2ff0cd323428a6089fae22ab75,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 133
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964018512924669526, guid: 6a75ff2ff0cd323428a6089fae22ab75,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964018512924669526, guid: 6a75ff2ff0cd323428a6089fae22ab75,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 667
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964018512924669526, guid: 6a75ff2ff0cd323428a6089fae22ab75,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964018512924669526, guid: 6a75ff2ff0cd323428a6089fae22ab75,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964018512924669526, guid: 6a75ff2ff0cd323428a6089fae22ab75,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964018512924669526, guid: 6a75ff2ff0cd323428a6089fae22ab75,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964018512924669526, guid: 6a75ff2ff0cd323428a6089fae22ab75,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964018512924669526, guid: 6a75ff2ff0cd323428a6089fae22ab75,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964018512924669526, guid: 6a75ff2ff0cd323428a6089fae22ab75,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964018512924669526, guid: 6a75ff2ff0cd323428a6089fae22ab75,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 588815811, guid: 6a75ff2ff0cd323428a6089fae22ab75, type: 3}
-      propertyPath: TourelleUIHolder
-      value: 
-      objectReference: {fileID: 2133641408}
-    - target: {fileID: 1664990836857731904, guid: 6a75ff2ff0cd323428a6089fae22ab75,
-        type: 3}
-      propertyPath: TourelleUIHolder
-      value: 
-      objectReference: {fileID: 2133641406}
-    m_RemovedComponents:
-    - {fileID: 1664990836857731904, guid: 6a75ff2ff0cd323428a6089fae22ab75, type: 3}
-  m_SourcePrefab: {fileID: 100100000, guid: 6a75ff2ff0cd323428a6089fae22ab75, type: 3}
---- !u!1001 &4374615254265345970
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1651791532}
-    m_Modifications:
-    - target: {fileID: 7180995776207800399, guid: 05e9277236e9b1f4f84657319a75e826,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 7180995776207800399, guid: 05e9277236e9b1f4f84657319a75e826,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7180995776207800399, guid: 05e9277236e9b1f4f84657319a75e826,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 943
-      objectReference: {fileID: 0}
-    - target: {fileID: 7180995776207800399, guid: 05e9277236e9b1f4f84657319a75e826,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7180995776207800399, guid: 05e9277236e9b1f4f84657319a75e826,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7180995776207800399, guid: 05e9277236e9b1f4f84657319a75e826,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7180995776207800399, guid: 05e9277236e9b1f4f84657319a75e826,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7180995776207800399, guid: 05e9277236e9b1f4f84657319a75e826,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7180995776207800399, guid: 05e9277236e9b1f4f84657319a75e826,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7180995776207800399, guid: 05e9277236e9b1f4f84657319a75e826,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7180995776207800399, guid: 05e9277236e9b1f4f84657319a75e826,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7180995776207800396, guid: 05e9277236e9b1f4f84657319a75e826,
-        type: 3}
-      propertyPath: m_Name
-      value: island_2_prefab
-      objectReference: {fileID: 0}
-    - target: {fileID: 1556368167, guid: 05e9277236e9b1f4f84657319a75e826, type: 3}
-      propertyPath: TourelleUIHolder
-      value: 
-      objectReference: {fileID: 2133641408}
-    - target: {fileID: 3653041669894132633, guid: 05e9277236e9b1f4f84657319a75e826,
-        type: 3}
-      propertyPath: TourelleUIHolder
-      value: 
-      objectReference: {fileID: 2133641406}
-    m_RemovedComponents:
-    - {fileID: 3653041669894132633, guid: 05e9277236e9b1f4f84657319a75e826, type: 3}
-  m_SourcePrefab: {fileID: 100100000, guid: 05e9277236e9b1f4f84657319a75e826, type: 3}
+  leftButton: {fileID: 1646256597}
+  rightButton: {fileID: 2081331902}
+  bottomButton: {fileID: 1944221852}

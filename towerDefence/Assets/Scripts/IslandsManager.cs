@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class IslandsManager : MonoBehaviour
 {
     private bool lookingToAddIsland = false;
+    public Button addIslandButton;
     public GameObject CollisionBox;
     private ColliderListener CollidingTest;
-    public GameObject[] island_prefabs;
+    private GameObject[] island_prefabs;
 
 
     // Start is called before the first frame update
@@ -16,6 +18,7 @@ public class IslandsManager : MonoBehaviour
     {
         //Debug.Log(CollisionBox.name);
         CollidingTest = CollisionBox.transform.GetChild(0).gameObject.GetComponent<ColliderListener>();
+        island_prefabs = GameManager.instance.island_prefabs;
         //Debug.Log(CollidingTest != null);
     }
 
@@ -43,6 +46,7 @@ public class IslandsManager : MonoBehaviour
                     GameObject babyIsland = island_prefabs[Random.Range(0, island_prefabs.Length - 1)];
                     Vector3 rotationRand = new Vector3(0, Random.Range(0, 360), 0);
                     Instantiate(babyIsland, hit.point,Quaternion.Euler(rotationRand),transform);
+                    GameManager.instance.money -= GameManager.instance.islandPrice;
                     onAddIsland();
                 }
             }
@@ -55,6 +59,7 @@ public class IslandsManager : MonoBehaviour
 
     public void onAddIsland()
     {
+        Debug.Log("onAddIsland");
         lookingToAddIsland = !lookingToAddIsland;
         if (!lookingToAddIsland)
         {
@@ -64,5 +69,15 @@ public class IslandsManager : MonoBehaviour
         {
             CollisionBox.SetActive(true);
         }
+    }
+
+    public void updateUI(){
+        if(GameManager.instance.money < GameManager.instance.islandPrice){
+            addIslandButton.interactable = false;
+        }
+        else {
+            addIslandButton.interactable = true;
+        }
+        
     }
 }
