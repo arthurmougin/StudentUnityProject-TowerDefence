@@ -21,6 +21,8 @@ public class Moveto : MonoBehaviour
     private float remainingDist = 100f;
     private float position = 0;
 
+    public float value = 2f;
+
     void Start()
     {
         /* Setup navigation */
@@ -43,7 +45,7 @@ public class Moveto : MonoBehaviour
         remainingDist = (navAgent.destination - gameObject.transform.position).magnitude;
         position = pathLength - remainingDist;
 
-        if (remainingDist < 5 && remainingDist > 0)
+        if (remainingDist < 6 && remainingDist > 0)
         {
            // Debug.Log("damagingDefences");
             //when an enemy arrive to spawn it damages it proportionnally to it's remainings shards
@@ -107,7 +109,8 @@ public class Moveto : MonoBehaviour
         int childCount = transform.GetChild(0).GetChild(0).childCount;
         //Debug.Log(childCount + " " + impact);
         if (childCount < impact)
-        {
+        {   
+            GameManager.instance.money += value;
             //Debug.Log("Destruction");
             SelfDestroy();
             return;

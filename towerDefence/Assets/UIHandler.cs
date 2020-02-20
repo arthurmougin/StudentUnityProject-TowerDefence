@@ -9,14 +9,13 @@ public class UIHandler : MonoBehaviour
     
 
     private IslandSingle Owner = null;
-    public Button leftButton, rightButton, bottomButton;
-    private Text leftButtonText, rightButtonText, bottomButtonText;
+    public Button leftButton, rightButton, bottomButton, middleButton;
+    private Text leftButtonText, rightButtonText, bottomButtonText, middleButtonText;
     private GameObject [] tower_prefabs;
 
     public struct uiParameter {
         public GameObject tower1; //left
         public GameObject tower2; //right
-        public bool sellTower;
     }
 
     public uiParameter actualUI;
@@ -26,8 +25,8 @@ public class UIHandler : MonoBehaviour
         leftButtonText = leftButton.transform.GetChild(0).GetComponent<Text>();
         rightButtonText = rightButton.transform.GetChild(0).GetComponent<Text>();
         bottomButtonText = bottomButton.transform.GetChild(0).GetComponent<Text>();
+        middleButtonText = middleButton.transform.GetChild(0).GetComponent<Text>();
         tower_prefabs = GameManager.instance.tower_prefabs;
-        actualUI.sellTower = false;
 
         actualUI.tower1 = tower_prefabs[0];
         actualUI.tower2 = tower_prefabs[1];
@@ -35,7 +34,7 @@ public class UIHandler : MonoBehaviour
     }
 
     public void askOwnerShip(GameObject caller){
-        Debug.Log("askOwnerShip");
+        //Debug.Log("askOwnerShip");
         //if someone ask for ownership while an other already own it, 
         //the new caller is the new owner.
         //We announce to the previous owner that he dont own us anymore
@@ -52,7 +51,7 @@ public class UIHandler : MonoBehaviour
     }
 
     public void dismissOwnerShip(GameObject caller){
-        Debug.Log("dismissOwnerShip");
+        //Debug.Log("dismissOwnerShip");
         IslandSingle callingComponent = caller.GetComponent<IslandSingle>();
         //If the one asking for dismis ownership is the actual owner, let's go
         if(Owner == callingComponent){
@@ -74,52 +73,57 @@ public class UIHandler : MonoBehaviour
         return;//we cant updateUi if we dont have any person to desplay
 
         GameObject tower = Owner.askTower();
-        rightButton.interactable = false;
-        leftButton.interactable = false;
-                
-        CannonBehavior t1CBComponent = actualUI.tower1.GetComponent<CannonBehavior>();
-        CannonBehavior t2CBComponent = actualUI.tower2.GetComponent<CannonBehavior>();
-        //analysing situation and updating model
+        
         if(tower != null){
+
+            //we hide every button
+            rightButton.gameObject.SetActive(false);
+            leftButton.gameObject.SetActive(false);
             
+            
+           //we check if it have an upgrade
+            //Debug.Log("analysing tourelle");
             GameObject towerUpgrade = tower.GetComponent<CannonBehavior>().upgradeTo;
-            GameObject towerprefab = PrefabUtility.GetCorrespondingObjectFromSource(tower);
-            //S'il peut etre upgrade, on permet l'interaction
-            if(actualUI.tower1 == towerprefab || t1CBComponent.upgradeTo == towerprefab)
-            {
-                actualUI.tower1 = towerUpgrade;
-                t1CBComponent = actualUI.tower1.GetComponent<CannonBehavior>();
-                if (t1CBComponent.upgradeTo != null && t1CBComponent.upgradeTo.GetComponent<CannonBehavior>().cost <= GameManager.instance.money)
-                    leftButton.interactable = true;
-            }
-               
-            if(actualUI.tower2 == towerprefab || t2CBComponent.upgradeTo == towerprefab)
-            {
-                actualUI.tower2 = towerUpgrade;
-                t2CBComponent = actualUI.tower2.GetComponent<CannonBehavior>();
-                if (t2CBComponent.upgradeTo != null &&  t2CBComponent.upgradeTo.GetComponent<CannonBehavior>().cost <= GameManager.instance.money)
-                    rightButton.interactable = true;
-            }
+            
+            //if it does
+            if(towerUpgrade != null){
+                //we show the upgrade button and update it's content
+                middleButton.gameObject.SetActive(true);
+                CannonBehavior upgradeComponent = towerUpgrade.GetComponent<CannonBehavior>();
+                middleButtonText.text = towerUpgrade.name + "\n" + upgradeComponent.fireRate + " Fire/Seconds\n" + upgradeComponent.range + "m of Range\n" + upgradeComponent.DamagePerFire + " of Damage\ncost = " + upgradeComponent.cost + "$";
                 
+                //we test if the player can afford it and turn the button on or off depending on the result
+                middleButton.interactable = (towerUpgrade.GetComponent<CannonBehavior>().cost <= GameManager.instance.money)? true : false;
+            }
+            else {
+                //if it dont have any upgrade
+                middleButton.gameObject.SetActive(false);
+            }
+             
+            //Debug.Log("EndAnalysing");
         }
         else {
+            //we update the good ui
+            rightButton.gameObject.SetActive(true);
+            leftButton.gameObject.SetActive(true);
+            middleButton.gameObject.SetActive(false);
+
+            CannonBehavior t1CBComponent = actualUI.tower1.GetComponent<CannonBehavior>();
+            CannonBehavior t2CBComponent = actualUI.tower2.GetComponent<CannonBehavior>();
+
             actualUI.tower1 = tower_prefabs[0];
             actualUI.tower2 = tower_prefabs[1];
 
-            //si l'on a les sous et qu'il y a une upgrade
-            
-            if (actualUI.tower1.GetComponent<CannonBehavior>().cost <= GameManager.instance.money)
-                leftButton.interactable = true;
-            if (actualUI.tower2.GetComponent<CannonBehavior>().cost <= GameManager.instance.money)
-                rightButton.interactable = true;
+            // we set on or off the buttons dependanding on their aviability
+            leftButton.interactable = (actualUI.tower1.GetComponent<CannonBehavior>().cost <= GameManager.instance.money)? true : false;
+            rightButton.interactable = (actualUI.tower2.GetComponent<CannonBehavior>().cost <= GameManager.instance.money)? true : false;
+
+            //updating data
+            leftButtonText.text = actualUI.tower1.name + "\n" + t1CBComponent.fireRate + " Fire/Seconds\n" + t1CBComponent.range + "m of Range\n" + t1CBComponent.DamagePerFire + " of Damage\ncost = " + t1CBComponent.cost + "$";
+            rightButtonText.text = actualUI.tower1.name + "\n" + t2CBComponent.fireRate + " Fire/Seconds\n" + t2CBComponent.range + "m of Range\n" + t2CBComponent.DamagePerFire + " of Damage\ncost = " + t2CBComponent.cost + "$";
         }
 
-
-        //applying model to view    
-        leftButtonText.text = actualUI.tower1.name + "\n" + t1CBComponent.fireRate + " Fire/Seconds\n" + t1CBComponent.range + "m of Range\n" + t1CBComponent.DamagePerFire + " of Damage\ncost = " + t1CBComponent.cost + "$";
-        rightButtonText.text = actualUI.tower1.name + "\n" + t2CBComponent.fireRate + " Fire/Seconds\n" + t2CBComponent.range + "m of Range\n" + t2CBComponent.DamagePerFire + " of Damage\ncost = " + t2CBComponent.cost + "$";
         bottomButtonText.text = ( tower != null ) ? "sell tourelle (+" + ( tower.GetComponent<CannonBehavior>().cost *  GameManager.instance.sellingFactor ) + "$)" : "Sell island (+" + GameManager.instance.islandPrice + "$)";
-
     }
 
     public void rightButtonClick(){
@@ -130,12 +134,16 @@ public class UIHandler : MonoBehaviour
         createTurret(actualUI.tower1);
     }
 
+    public void middleButtonClick(){
+        createTurret(Owner.askTower().GetComponent<CannonBehavior>().upgradeTo);
+        Debug.Log("middleClick");
+    }
+
     private void createTurret(GameObject towerToBuild){
         if (towerToBuild.GetComponent<CannonBehavior>().cost > GameManager.instance.money){
             Debug.Log("Not Enough Money");
             return;
         }
-        Debug.Log("leftButtonClick");
 
         GameObject tower = Owner.askTower();
         if(tower)
@@ -147,7 +155,7 @@ public class UIHandler : MonoBehaviour
     }
 
     public void bottomButtonClick(){
-        Debug.Log("bottomButtonClick");
+        //Debug.Log("bottomButtonClick");
         GameObject tower = Owner.askTower();
         if(tower){
             GameManager.instance.money += tower.GetComponent<CannonBehavior>().cost *  GameManager.instance.sellingFactor;
@@ -155,7 +163,7 @@ public class UIHandler : MonoBehaviour
         }
         else {
             GameManager.instance.money += GameManager.instance.islandPrice;
-            Destroy(Owner.transform.parent);
+            Destroy(Owner.transform.parent.gameObject);
         }
         dismissOwnerShip(Owner.gameObject);
 

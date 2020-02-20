@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public GameObject failMenu;
     public GameObject[] tower_prefabs;
     public  GameObject[] island_prefabs;
+
+    public float startingMoney = 100f;
     public float money{
         get{
             return _money;
@@ -42,6 +44,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Time.timeScale = 0;
+        money = startingMoney;
     }
 
     // Update is called once per frame
@@ -91,6 +94,8 @@ public class GameManager : MonoBehaviour
         goal.GetComponent<Goal>().reset();
         foreach (Transform child in tourelleHolder.transform)
             Destroy(child.gameObject);
+        gameMenu.SetActive(false);
+        failMenu.SetActive(true);
     }
 
     void updatePrice(){

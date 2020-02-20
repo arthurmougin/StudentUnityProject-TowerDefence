@@ -70,6 +70,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mediumLeapHeight: 20
   maxDeltaLeapHeight: 50
+  value: 20
 --- !u!65 &1897946442690118484
 BoxCollider:
   m_ObjectHideFlags: 0

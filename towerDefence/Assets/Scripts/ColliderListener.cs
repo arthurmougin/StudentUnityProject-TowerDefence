@@ -14,7 +14,7 @@ public class ColliderListener : MonoBehaviour
     void Start()
     {
         rend = gameObject.GetComponent<Renderer>();
-        Debug.Log(rend != null);
+        //Debug.Log(rend != null);
         safe = rend.material;
         aviable = false;
     }

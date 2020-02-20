@@ -28,7 +28,7 @@ public class Goal : MonoBehaviour
     public void OnTakeDamage(int damage)
     {
         actualLive -= damage;
-        Debug.Log(damage + " " +  actualLive);
+        Debug.Log("Damages received : "+damage + ", remaining life : " +  actualLive);
         if (actualLive >= 0)//tant qu'il y a de la vie
         {
             //on montre notre faiblesse
@@ -44,5 +44,8 @@ public class Goal : MonoBehaviour
     {
         float newScale = (actualLive * (maxShieldSize - minShieldSize) / maxLive) + minShieldSize;
         shield.transform.localScale = new Vector3(newScale, newScale, newScale);
+        //TODO : play with opacity
+        // opacity : (actualLive / maxLive)
+
     }
 }

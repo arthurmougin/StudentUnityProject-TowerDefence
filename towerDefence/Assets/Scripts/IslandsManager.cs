@@ -19,7 +19,7 @@ public class IslandsManager : MonoBehaviour
         //Debug.Log(CollisionBox.name);
         CollidingTest = CollisionBox.transform.GetChild(0).gameObject.GetComponent<ColliderListener>();
         island_prefabs = GameManager.instance.island_prefabs;
-        //Debug.Log(CollidingTest != null);
+        addIslandButton.transform.GetChild(0).GetComponent<Text>().text = "build Island (" + GameManager.instance.islandPrice +"$)";
     }
 
     // Update is called once per frame
@@ -59,7 +59,7 @@ public class IslandsManager : MonoBehaviour
 
     public void onAddIsland()
     {
-        Debug.Log("onAddIsland");
+        //Debug.Log("onAddIsland");
         lookingToAddIsland = !lookingToAddIsland;
         if (!lookingToAddIsland)
         {

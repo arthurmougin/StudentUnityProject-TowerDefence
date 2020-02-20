@@ -46,7 +46,7 @@ public class Bullet : MonoBehaviour
     void HitTarget()
     {
 
-        Debug.Log("touché");
+        //Debug.Log("touché");
         Destroy(gameObject);
         target.gameObject.GetComponent<Moveto>().Touché(impact);
         return;
