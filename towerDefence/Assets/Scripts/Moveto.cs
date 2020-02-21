@@ -58,6 +58,7 @@ public class Moveto : MonoBehaviour
         {
             updateHeight();
         }
+        
     }
 
     void updateHeight()

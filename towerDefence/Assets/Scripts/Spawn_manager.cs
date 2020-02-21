@@ -122,13 +122,11 @@ public class Spawn_manager : MonoBehaviour
                 if (!spawnBasicEnemy())
                     spawnHardEnemy();
             }
-
             //waiting
             yield return new WaitForSeconds(1/spawnFrequency);
-
         }
-        SpawnState = Status.waiting;
 
+        SpawnState = Status.waiting;
         yield break;
     }
 
@@ -171,13 +169,13 @@ public class Spawn_manager : MonoBehaviour
 
     public void reset()
     {
+        Debug.Log("reseting SpawnManager");
         StopCoroutine("spawnAgent");
 
         foreach (Transform child in transform)
             Destroy(child.gameObject);
-
-        actualWave = 0;
+        actualWave = basicEnemyToSpawn = hardEnemyToSpawn = 0;
         SpawnState = Status.waiting;
-
+        informationDisplay.GetComponent<InformationDisplay>().reset(instance);
     }
 }

@@ -81,6 +81,7 @@ public class GameManager : MonoBehaviour
         //Time.timeScale = 1;
         mainMenu.SetActive(true);
         pauseMenu.SetActive(false);
+        failMenu.SetActive(false);
     }
 
     public void onShieldFallen() {

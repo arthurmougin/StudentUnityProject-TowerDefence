@@ -42,7 +42,7 @@ public class IslandSingle : MonoBehaviour
             This line (UIPos.z = 0;) fix everything
             */
             UIPos.z = 0;
-            Debug.Log(UIPos.ToString());
+            //Debug.Log(UIPos.ToString());
             
             TourelleUIHolder.transform.position = UIPos;
         }

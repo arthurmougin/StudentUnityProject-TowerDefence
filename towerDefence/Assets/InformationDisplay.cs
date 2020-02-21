@@ -49,6 +49,10 @@ public class InformationDisplay : MonoBehaviour
         StartCoroutine("countdown",self);
     }
 
+    public void reset(Spawn_manager self){
+        StopCoroutine("countdown");
+    }
+
 
     IEnumerator countdown(Spawn_manager self){
         Debug.Log("CountDown started");
