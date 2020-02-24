@@ -16,7 +16,9 @@ public class ColliderListener : MonoBehaviour
         rend = gameObject.GetComponent<Renderer>();
         //Debug.Log(rend != null);
         safe = rend.material;
-        aviable = false;
+
+        aviable = true;
+        rend.material = safe;
     }
 
     // Update is called once per frame
@@ -27,23 +29,23 @@ public class ColliderListener : MonoBehaviour
 
     void OnTriggerEnter(Collider c)
     {
-        if (c.gameObject.name == "navmesh")
+        if (c.gameObject.name != "navmesh")
         {
-            aviable = true;
-            rend.material = safe;
-            return;
+            aviable = false;
+            rend.material = warning;
         }
             
        // Debug.Log("triggerEnter");
-        aviable = false;
-        rend.material = warning;
+        
     }
     void OnTriggerExit(Collider c)
     {
-      //  Debug.Log("OnTriggerExit");
-        aviable = true;
-        rend.material = safe;
-        
+        //  Debug.Log("OnTriggerExit");
+        if (c.gameObject.name != "navmesh")
+        {
+            aviable = true;
+            rend.material = safe;
+        }
     }
     /*
     void OnTriggerStay(Collider c)

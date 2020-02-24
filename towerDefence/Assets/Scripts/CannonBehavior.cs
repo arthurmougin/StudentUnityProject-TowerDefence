@@ -14,6 +14,7 @@ public class CannonBehavior : MonoBehaviour
     public float range;
     public GameObject bullet;
     public Transform firepoint;
+   
     
 
     /*
@@ -39,6 +40,13 @@ public class CannonBehavior : MonoBehaviour
     public GameObject upgradeTo = null;
     public int cost;
 
+    /*
+     * Animation
+     */
+    private Animator anim;
+    private int firingHash = Animator.StringToHash("firing");
+    private bool animated = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +54,7 @@ public class CannonBehavior : MonoBehaviour
         InvokeRepeating("updateTarget", 0f, 0.5f);
         //setup rotating parts
         rotatingStructure = baseStructure.transform.GetChild(0);
+        anim = transform.GetChild(0).GetComponent<Animator>();
 
     }
 
@@ -54,7 +63,23 @@ public class CannonBehavior : MonoBehaviour
     {
         //no target, no chocolate
         if (target == null)
+        {
+            if (animated)
+            {
+                animated = false;
+                anim.SetBool("firing", animated);
+                Debug.Log(animated);
+            }
             return;
+        }
+
+        if (!animated)
+        {
+            animated = true;
+            anim.SetBool("firing", animated);
+            Debug.Log(animated);
+        }
+        
 
         //Facing Enemy
         rotating();

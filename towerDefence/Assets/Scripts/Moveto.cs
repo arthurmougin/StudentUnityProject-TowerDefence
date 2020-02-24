@@ -45,7 +45,7 @@ public class Moveto : MonoBehaviour
         remainingDist = (navAgent.destination - gameObject.transform.position).magnitude;
         position = pathLength - remainingDist;
 
-        if (remainingDist < 6 && remainingDist > 0)
+        if (remainingDist < 100 && remainingDist > 0)
         {
            // Debug.Log("damagingDefences");
             //when an enemy arrive to spawn it damages it proportionnally to it's remainings shards

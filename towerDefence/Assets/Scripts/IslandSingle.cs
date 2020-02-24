@@ -48,7 +48,6 @@ public class IslandSingle : MonoBehaviour
         }
     }
 
-
 /*
 For esthetical reason i did'nt wanted to change the colors of the islands to show focus
 soo i went for scale changing. Dont worrie, it only apply to the island and not to 

@@ -244,7 +244,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverFactor: 1.1
-  TourelleUIHolder: {fileID: 0}
 --- !u!1 &3700490339409698056
 GameObject:
   m_ObjectHideFlags: 0
