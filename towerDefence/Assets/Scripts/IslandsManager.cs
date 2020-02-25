@@ -59,7 +59,7 @@ public class IslandsManager : MonoBehaviour
 
     public void onAddIsland()
     {
-        //Debug.Log("onAddIsland");
+        Debug.Log("onAddIsland");
         lookingToAddIsland = !lookingToAddIsland;
         if (!lookingToAddIsland)
         {

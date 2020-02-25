@@ -1,4 +1,2 @@
-Base path: 'C:/buildslave/unity/build/build/WindowsEditor/Data', plugins path ''
+Base path: 'D:/Installations/Unity/Hub/Editor/2019.3.0a6/Editor/Data', plugins path 'D:/Installations/Unity/Hub/Editor/2019.3.0a6/Editor/Data/PlaybackEngines'
 Cmd: initializeCompiler
-Cmd: compileComputeKernel
-  api=4 insize=18299 outsize=8523 ok=1
